@@ -1,0 +1,3 @@
+[submodule "unseen_clustering_network"]
+	path = unseen_clustering_network
+	url = https://github.com/NVlabs/UnseenObjectClustering.git
