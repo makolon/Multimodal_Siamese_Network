@@ -1,0 +1,7 @@
+<?xml version='1.0'?>
+<launch>
+    <node pkg='rs007n' type='rs007n_interface.py' name='rs007n_interface'/>
+    <node pkg='rs007n' type='gripper_interface.py' name='gripper_interface'/>
+    <node pkg='rs007n' type='sample.py' name='test'/>
+</launch>
+

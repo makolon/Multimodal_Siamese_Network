@@ -1,0 +1,2 @@
+- You should run docker on GUI or check `$DISPLAY`.
+- Specify your desierd directory in `run.sh`.

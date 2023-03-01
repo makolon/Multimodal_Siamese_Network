@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="rs007n_with_gripper">
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="ros_namespace" default="xarm"/>
+  <xacro:arg name="limited" default="false"/>
+  <xacro:arg name="effort_control" default="false"/>
+  <xacro:arg name="velocity_control" default="false"/>
+
+  <xacro:include filename="$(find khi_rs_description)/urdf/rs007n_macro.xacro" />
+  <xacro:include filename="$(find khi_rs_gripper)/urdf/rs_gripper_model.xacro" />
+  
+  <xacro:khi_rs007n prefix="" />
+  <xacro:load_gripper prefix="" attach_to='$(arg prefix)link6' ns='rs' xyz='0 0 0' rpy='0 0 0' effort_control='false' velocity_control='false' />
+
+  <link name="world"/>
+
+  <joint name="world2base" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+</robot>

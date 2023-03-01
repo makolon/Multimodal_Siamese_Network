@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name='joy_control' default='True'/>
+    <node name="rs007n_interface" pkg="rs007n" type="rs007n_interface.py"/>
+    <node name="gripper_interface" pkg="rs007n" type="gripper_interface.py"/>
+    <group if="$(arg joy_control)">
+        <node name="joy_node" pkg="joy" type="joy_node"/>
+        <node name="joy_controller" pkg="rs007n" type="joy_controller.py"/>
+    </group>
+</launch>

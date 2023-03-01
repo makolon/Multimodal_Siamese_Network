@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="robot_ip" default="192.168.10.210"/>
+    <arg name="show_rviz" default="true"/>
+    <arg name="joy_control" default="False"/>
+
+    <include file="$(find khi_rs007n_gripper_moveit_config)/launch/realMove_exec.launch">
+        <arg name="robot_ip" value="$(arg robot_ip)"/>
+        <arg name="show_rviz" value="$(arg show_rviz)"/>
+    </include>
+
+    <include file="$(find rs007n)/launch/rs007n_interface.launch">
+        <arg name="joy_control" value="$(arg joy_control)"/>
+    </include>
+</launch>

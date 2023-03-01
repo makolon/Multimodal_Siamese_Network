@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<robot name="rs_gripper" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="rs_gripper_urdf" params="prefix:='' attach_to:='' rpy:='0 0 0' xyz:='0 0 0' ">
+  <xacro:property name="PI" value="3.14159"/>
+  <xacro:unless value="${attach_to == ''}">
+    <joint name="${prefix}gripper_fix" type="fixed">
+      <parent link="${attach_to}"/>
+      <child link="${prefix}rs_gripper_base_link"/>
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+    </joint>
+  </xacro:unless>
+
+  <link name="${prefix}rs_gripper_base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://khi_rs_gripper/meshes/base_link.stl" scale="0.0001 0.0001 0.0001"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name='Silver'>
+        <color rgba="0.2 0.9 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://khi_rs_gripper/meshes/base_link.stl" scale="0.0001 0.0001 0.0001"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.467"/>
+      <inertia ixx="0.178" ixy="0" ixz="0" iyy="0.215" iyz="0" izz="0.101"/>
+    </inertial>
+  </link>
+ 
+  <link name="${prefix}left_finger">
+    <visual>
+      <geometry>
+        <mesh filename="package://khi_rs_gripper/meshes/finger_1.stl" scale="0.0001 0.0001 0.0001"/>
+      </geometry>
+      <origin xyz="0.01 0 -0.062" rpy="0 0 0"/>
+      <material name='Silver'>
+        <color rgba="0.2 0.9 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://khi_rs_gripper/meshes/finger_1.stl" scale="0.0001 0.0001 0.0001"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0191" ixy="0" ixz="0" iyy="0.0164" iyz="0" izz="0.0061"/>
+    </inertial>
+  </link>
+
+  <joint name="${prefix}left_finger_joint" type="prismatic">
+    <axis xyz="1 0 0"/>
+    <limit effort="30" velocity="1.0" lower="-0.004" upper="0.007" />
+    <parent link="${prefix}rs_gripper_base_link"/>
+    <child link="${prefix}left_finger"/>
+    <origin xyz="-0.015 0 0.062" rpy="0 0 0"/>
+  </joint>
+
+  <link name="${prefix}right_finger">
+    <visual>
+      <geometry>
+        <mesh filename="package://khi_rs_gripper/meshes/finger_1.stl" scale="0.0001 0.0001 0.0001"/>
+      </geometry>
+      <origin xyz="0.01 0 -0.062" rpy="0 0 0"/>
+      <material name='Silver'>
+        <color rgba="0.2 0.9 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://khi_rs_gripper/meshes/finger_1.stl" scale="0.0001 0.0001 0.0001"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0191" ixy="0" ixz="0" iyy="0.0164" iyz="0" izz="0.0061"/>
+    </inertial>
+  </link>
+
+  <joint name="${prefix}right_finger_joint" type="prismatic">
+    <axis xyz="1 0 0"/>
+    <limit effort="30" velocity="1.0" lower="-0.004" upper="0.007" />
+    <parent link="${prefix}rs_gripper_base_link"/>
+    <child link="${prefix}right_finger"/>
+    <origin xyz="0.015 0 0.062" rpy="0 0 ${PI}"/>
+  </joint>
+  </xacro:macro>
+</robot>

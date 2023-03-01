@@ -1,3 +1,6 @@
 [submodule "unseen_clustering_network"]
 	path = unseen_clustering_network
 	url = https://github.com/NVlabs/UnseenObjectClustering.git
+[submodule "robo_trainer/catkin_ws/src/khi_robot"]
+	path = robo_trainer/catkin_ws/src/khi_robot
+	url = https://github.com/Kawasaki-Robotics/khi_robot.git

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="rs_gripper">
+  <xacro:include filename="$(find rs_gripper)/urdf/rs_gripper_model.xacro" />
+  <xacro:load_gripper />
+
+</robot>
